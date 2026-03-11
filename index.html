@@ -2,9 +2,19 @@
 <html lang="es-AR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <title>Gusman Shoes | Mayorista de calzados en Argentina</title>
   <meta name="description" content="Distribuidor mayorista de calzados: zapatillas, ojotas, sandalias, botas. Envíos a todo el país. Gusman Shoes, la confianza del revendedor.">
+  
+  <!-- FAVICON - Espacio para tu propio favicon -->
+  <!-- Reemplaza la URL con la de tu favicon (formato .ico, .png o .svg) -->
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#FF6B00">
+  <meta name="theme-color" content="#FFFFFF">
+  
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Gusman Shoes - Mayorista de calzados">
@@ -12,6 +22,7 @@
   <meta property="og:image" content="https://ejemplo.com/og-gusman.jpg">
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
+  
   <!-- Schema.org -->
   <script type="application/ld+json">
   {
@@ -56,27 +67,44 @@
     }
     html {
       scroll-behavior: smooth;
+      font-size: 16px;
     }
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
       background-color: #FFFFFF;
       color: #111111;
       line-height: 1.5;
+      overflow-x: hidden;
+      width: 100%;
     }
     .container {
+      width: 100%;
       max-width: 1280px;
       margin: 0 auto;
-      padding: 0 32px;
+      padding: 0 16px;
     }
+    @media (min-width: 640px) {
+      .container {
+        padding: 0 24px;
+      }
+    }
+    @media (min-width: 1024px) {
+      .container {
+        padding: 0 32px;
+      }
+    }
+    
     h1, h2, h3 {
       color: #111111;
+      line-height: 1.2;
     }
+    
     /* CTA naranja */
     .btn-cta {
       background-color: #FF6B00;
       color: white;
       transition: background-color 0.2s;
-      padding: 14px 36px;
+      padding: 12px 24px;
       border-radius: 40px;
       font-weight: 700;
       text-decoration: none;
@@ -84,16 +112,23 @@
       border: none;
       cursor: pointer;
       font-size: 1rem;
+      text-align: center;
+    }
+    @media (min-width: 768px) {
+      .btn-cta {
+        padding: 14px 36px;
+      }
     }
     .btn-cta:hover {
       background-color: #E85A00;
     }
+    
     /* CTA verde */
     .btn-green {
       background-color: #22C55E;
       color: white;
       transition: background-color 0.2s;
-      padding: 14px 36px;
+      padding: 12px 24px;
       border-radius: 40px;
       font-weight: 700;
       text-decoration: none;
@@ -101,10 +136,17 @@
       border: none;
       cursor: pointer;
       font-size: 1rem;
+      text-align: center;
+    }
+    @media (min-width: 768px) {
+      .btn-green {
+        padding: 14px 36px;
+      }
     }
     .btn-green:hover {
       background-color: #16A34A;
     }
+    
     /* cookie bar */
     .cookie-bar {
       background: #111111;
@@ -117,10 +159,15 @@
     }
     .cookie-content {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
+    }
+    @media (min-width: 640px) {
+      .cookie-content {
+        flex-direction: row;
+        justify-content: space-between;
+      }
     }
     .cookie-content a {
       color: #FF8C42;
@@ -134,20 +181,22 @@
       border-radius: 6px;
       font-weight: 600;
       cursor: pointer;
+      white-space: nowrap;
     }
     .btn-cookie:hover {
       background: #FF6B00;
       border-color: #FF6B00;
     }
 
-    /* HEADER CON MENÚ SIMPLIFICADO */
+    /* HEADER CON MENÚ RESPONSIVE */
     .main-header {
       background: #FFFFFF;
       border-bottom: 1px solid #E5E5E5;
-      padding: 16px 0;
+      padding: 12px 0;
       position: sticky;
       top: 0;
       z-index: 1000;
+      width: 100%;
     }
     .header-flex {
       display: flex;
@@ -155,28 +204,46 @@
       align-items: center;
     }
     .logo h1 {
-      font-size: 2rem;
+      font-size: 1.5rem;
       font-weight: 800;
       color: #111;
+    }
+    @media (min-width: 480px) {
+      .logo h1 {
+        font-size: 1.8rem;
+      }
     }
     .logo span {
       background: #111;
       color: white;
-      padding: 4px 12px;
+      padding: 4px 8px;
       border-radius: 40px;
-      font-size: 0.9rem;
-      margin-left: 8px;
+      font-size: 0.7rem;
+      margin-left: 4px;
+      white-space: nowrap;
+    }
+    @media (min-width: 480px) {
+      .logo span {
+        padding: 4px 12px;
+        font-size: 0.9rem;
+        margin-left: 8px;
+      }
     }
     
-    /* ESTRUCTURA DE MENÚ EN ESPAÑOL */
+    /* Menú desktop */
     .nav-menu {
-      display: flex;
-      align-items: center;
-      gap: 24px;
+      display: none;
+    }
+    @media (min-width: 1024px) {
+      .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
     }
     .nav-list {
       display: flex;
-      gap: 20px;
+      gap: 16px;
       list-style: none;
       align-items: center;
     }
@@ -189,7 +256,7 @@
       font-weight: 600;
       transition: color 0.2s;
       padding: 8px 0;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       white-space: nowrap;
     }
     .nav-list a:hover {
@@ -207,7 +274,7 @@
       background: white;
       border: 1px solid #E5E5E5;
       border-radius: 12px;
-      padding: 12px 0;
+      padding: 8px 0;
       min-width: 220px;
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
       opacity: 0;
@@ -226,8 +293,9 @@
     }
     .submenu a {
       display: block;
-      padding: 10px 20px;
+      padding: 8px 20px;
       font-weight: 500;
+      font-size: 0.9rem;
     }
     .submenu a:hover {
       background: #F5F5F5;
@@ -239,10 +307,12 @@
       text-decoration: none;
       font-weight: 600;
       border: 2px solid #111;
-      padding: 8px 20px;
+      padding: 6px 16px;
       border-radius: 40px;
       transition: 0.2s;
       white-space: nowrap;
+      font-size: 0.9rem;
+      display: inline-block;
     }
     .nav-whatsapp a:hover {
       background: #111;
@@ -251,55 +321,66 @@
     
     /* Menú hamburguesa (mobile) */
     .hamburger {
-      display: none;
+      display: flex;
       flex-direction: column;
       cursor: pointer;
       gap: 6px;
+      z-index: 1001;
+    }
+    @media (min-width: 1024px) {
+      .hamburger {
+        display: none;
+      }
     }
     .hamburger span {
-      width: 30px;
+      width: 28px;
       height: 3px;
       background: #111;
       border-radius: 3px;
       transition: 0.3s;
     }
     .mobile-menu {
-      display: none;
       position: fixed;
-      top: 80px;
+      top: 70px;
       left: 0;
       width: 100%;
-      height: calc(100vh - 80px);
+      height: calc(100vh - 70px);
       background: white;
       flex-direction: column;
-      padding: 40px 32px;
+      padding: 24px 20px;
       z-index: 999;
       transform: translateX(-100%);
       transition: transform 0.3s ease;
       overflow-y: auto;
+      display: none;
     }
     .mobile-menu.active {
       transform: translateX(0);
     }
+    @media (max-width: 1023px) {
+      .mobile-menu {
+        display: flex;
+      }
+    }
     .mobile-list {
       list-style: none;
-      margin-bottom: 32px;
+      margin-bottom: 30px;
     }
     .mobile-list > li {
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
     .mobile-list a {
       text-decoration: none;
       color: #111;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 700;
     }
     .mobile-submenu {
-      margin-left: 20px;
-      margin-top: 10px;
+      margin-left: 16px;
+      margin-top: 8px;
     }
     .mobile-submenu li {
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     .mobile-submenu a {
       font-size: 1.1rem;
@@ -314,18 +395,25 @@
       font-weight: 700;
       text-decoration: none;
       color: #111;
+      font-size: 1.1rem;
     }
 
     /* HERO */
     .hero {
       position: relative;
       background-color: #F5F5F5;
-      padding: 80px 0;
+      padding: 60px 0;
       background-image: url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-      background-attachment: fixed;
+      background-attachment: scroll;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
+    }
+    @media (min-width: 768px) {
+      .hero {
+        padding: 80px 0;
+        background-attachment: fixed;
+      }
     }
     .hero::before {
       content: "";
@@ -343,67 +431,97 @@
     }
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
+      grid-template-columns: 1fr;
+      gap: 40px;
       align-items: center;
+    }
+    @media (min-width: 768px) {
+      .hero-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+      }
     }
     .hero-content {
       color: white;
     }
     .hero-content h2 {
-      font-size: 3rem;
+      font-size: 2.2rem;
       font-weight: 800;
       line-height: 1.1;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       color: white;
+    }
+    @media (min-width: 768px) {
+      .hero-content h2 {
+        font-size: 2.8rem;
+      }
+    }
+    @media (min-width: 1024px) {
+      .hero-content h2 {
+        font-size: 3rem;
+      }
     }
     .hero-content .highlight {
       color: #FF6B00;
     }
     .hero-content p {
-      font-size: 1.2rem;
+      font-size: 1rem;
       color: rgba(255,255,255,0.9);
-      margin-bottom: 32px;
+      margin-bottom: 24px;
       border-left: 4px solid #FF6B00;
-      padding-left: 20px;
+      padding-left: 16px;
+    }
+    @media (min-width: 768px) {
+      .hero-content p {
+        font-size: 1.2rem;
+      }
     }
     .hero-badge {
       background: #22C55E;
       color: white;
-      padding: 6px 16px;
+      padding: 6px 12px;
       border-radius: 40px;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       font-weight: 700;
       display: inline-block;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
     .hero-buttons {
       display: flex;
-      gap: 16px;
+      gap: 12px;
       flex-wrap: wrap;
     }
     .hero-stats {
       background: white;
-      padding: 32px;
-      border-radius: 24px;
+      padding: 24px;
+      border-radius: 20px;
       box-shadow: 0 20px 30px rgba(0,0,0,0.15);
       border: 1px solid #E5E5E5;
     }
     .stats-numbers {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
+      gap: 10px;
+      flex-wrap: wrap;
     }
     .stat-item {
       text-align: center;
+      flex: 1;
+      min-width: 80px;
     }
     .stat-value {
-      font-size: 2.2rem;
+      font-size: 1.8rem;
       font-weight: 800;
       color: #111;
     }
+    @media (min-width: 768px) {
+      .stat-value {
+        font-size: 2.2rem;
+      }
+    }
     .stat-label {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       color: #555;
       font-weight: 600;
     }
@@ -412,15 +530,17 @@
       align-items: center;
       gap: 8px;
       background: #F5F5F5;
-      padding: 16px;
-      border-radius: 60px;
+      padding: 12px;
+      border-radius: 40px;
       justify-content: center;
       font-weight: 700;
       border: 1px solid #E5E5E5;
+      font-size: 0.9rem;
+      flex-wrap: wrap;
     }
     .dot-verde {
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
       background: #4ADE80;
       border-radius: 50%;
     }
@@ -429,52 +549,93 @@
     .trust-banner {
       background: #111111;
       color: white;
-      padding: 32px 0;
+      padding: 24px 0;
     }
     .trust-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
       text-align: center;
     }
+    @media (min-width: 640px) {
+      .trust-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+      }
+    }
     .trust-value {
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: 800;
       color: #FF8C42;
+    }
+    @media (min-width: 768px) {
+      .trust-value {
+        font-size: 2rem;
+      }
     }
 
     /* SECCIONES DESTACADAS */
     .destacadas {
-      padding: 60px 0;
+      padding: 40px 0;
       background: white;
     }
+    @media (min-width: 768px) {
+      .destacadas {
+        padding: 60px 0;
+      }
+    }
     .destacada-grupo {
-      margin-bottom: 64px;
-      scroll-margin-top: 100px;
+      margin-bottom: 48px;
+      scroll-margin-top: 80px;
     }
     .destacada-titulo {
-      font-size: 2rem;
+      font-size: 1.6rem;
       font-weight: 800;
-      margin-bottom: 28px;
-      padding-bottom: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 10px;
       border-bottom: 4px solid #FF6B00;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    @media (min-width: 768px) {
+      .destacada-titulo {
+        font-size: 2rem;
+      }
     }
     .destacada-titulo .badge {
       background: #111;
       color: white;
-      padding: 6px 24px;
+      padding: 4px 16px;
       border-radius: 40px;
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
-    /* Grid para desktop: 4 cards por linha */
+    
+    /* Grid responsivo de cards */
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 16px;
       margin: 0 auto;
+    }
+    @media (min-width: 480px) {
+      .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+    }
+    @media (min-width: 768px) {
+      .card-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+    }
+    @media (min-width: 1024px) {
+      .card-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
     }
     .card-producto {
       background: #F5F5F5;
@@ -495,7 +656,8 @@
     }
     .card-img {
       width: 100%;
-      height: 140px;
+      aspect-ratio: 1/1;
+      max-height: 180px;
       background: #ddd;
       border-radius: 16px;
       margin-bottom: 16px;
@@ -506,7 +668,7 @@
     }
     .card-title {
       font-weight: 800;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       margin-bottom: 12px;
       color: #111;
       flex-grow: 1;
@@ -515,10 +677,10 @@
       background-color: #22C55E;
       color: white;
       border: none;
-      padding: 10px 16px;
+      padding: 10px 12px;
       border-radius: 40px;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       cursor: pointer;
       width: 100%;
       text-decoration: none;
@@ -535,97 +697,163 @@
     }
     .btn-wa::before {
       content: "📱 ";
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
 
-    /* CATÁLOGO - Secciones en español */
+    /* CATÁLOGO */
     .categorias {
-      padding: 80px 0;
+      padding: 40px 0;
       background: #F5F5F5;
     }
+    @media (min-width: 768px) {
+      .categorias {
+        padding: 60px 0;
+      }
+    }
     .section-title {
-      font-size: 2.4rem;
+      font-size: 1.8rem;
       font-weight: 800;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       text-align: center;
+    }
+    @media (min-width: 768px) {
+      .section-title {
+        font-size: 2.2rem;
+      }
     }
     .section-sub {
       text-align: center;
-      font-size: 1.2rem;
+      font-size: 1rem;
       color: #555;
       max-width: 700px;
-      margin: 0 auto 48px;
+      margin: 0 auto 32px;
+      padding: 0 16px;
     }
     .categoria-grupo {
-      margin-bottom: 64px;
-      scroll-margin-top: 100px;
+      margin-bottom: 48px;
+      scroll-margin-top: 80px;
     }
     .grupo-titulo {
-      font-size: 2rem;
+      font-size: 1.6rem;
       font-weight: 800;
-      margin-bottom: 28px;
-      padding-bottom: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 10px;
       border-bottom: 4px solid #FF6B00;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
     }
     .grupo-titulo .badge {
       background: #111;
       color: white;
-      padding: 6px 24px;
+      padding: 4px 16px;
       border-radius: 40px;
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
 
-    /* BENEFICIOS */
+    /* BENEFICIOS Y SECCIONES */
     .beneficios {
       background: white;
-      padding: 60px 0;
+      padding: 40px 0;
     }
     .beneficios-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 40px;
+      grid-template-columns: 1fr;
+      gap: 30px;
       text-align: center;
     }
+    @media (min-width: 640px) {
+      .beneficios-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 1024px) {
+      .beneficios-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
     .beneficio-item i {
-      font-size: 2.4rem;
+      font-size: 2rem;
       font-style: normal;
       background: #FF6B00;
       color: white;
-      width: 80px;
-      height: 80px;
+      width: 70px;
+      height: 70px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border-radius: 80px;
-      margin-bottom: 20px;
+      border-radius: 70px;
+      margin-bottom: 16px;
     }
     .beneficio-item h3 {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       margin-bottom: 8px;
     }
     .beneficio-item p {
       color: #333;
+      font-size: 0.95rem;
+    }
+
+    /* BLOG GRID */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media (min-width: 640px) {
+      .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 1024px) {
+      .blog-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    .blog-card {
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    /* COMO COMPRAR GRID */
+    .pasos-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+      text-align: center;
+    }
+    @media (min-width: 768px) {
+      .pasos-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
     /* FOOTER */
     .footer {
       background: #111111;
       color: #ccc;
-      padding: 60px 0 30px;
+      padding: 40px 0 20px;
     }
     .footer-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 48px;
-      margin-bottom: 48px;
+      grid-template-columns: 1fr;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    @media (min-width: 640px) {
+      .footer-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+      }
     }
     .footer-col h4 {
       color: white;
       font-size: 1.2rem;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       border-left: 4px solid #FF6B00;
       padding-left: 12px;
     }
@@ -635,7 +863,7 @@
     .footer-col li, .footer-col a {
       color: #aaa;
       text-decoration: none;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       display: block;
       font-size: 0.9rem;
     }
@@ -644,56 +872,24 @@
     }
     .footer-bottom {
       border-top: 1px solid #333;
-      padding-top: 24px;
+      padding-top: 20px;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
-      font-size: 0.85rem;
+      gap: 10px;
+      font-size: 0.8rem;
       color: #777;
+    }
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+      }
     }
     .footer-bottom a {
       color: #FF8C42;
       text-decoration: none;
-    }
-
-    /* RESPONSIVIDAD */
-    @media (max-width: 1024px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-      .card-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    @media (max-width: 768px) {
-      .nav-menu {
-        display: none;
-      }
-      .hamburger {
-        display: flex;
-      }
-      .mobile-menu {
-        display: flex;
-      }
-      .trust-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-      }
-      .hero-content h2 {
-        font-size: 2.2rem;
-      }
-      .container {
-        padding: 0 20px;
-      }
-    }
-    @media (max-width: 480px) {
-      .card-grid {
-        grid-template-columns: 1fr;
-      }
-      .btn-cta, .btn-green {
-        padding: 12px 24px;
-      }
+      margin: 0 5px;
     }
   </style>
 </head>
@@ -706,24 +902,24 @@
     </div>
   </div>
 
-  <!-- HEADER CON MENÚ EN ESPAÑOL -->
+  <!-- HEADER CON MENÚ RESPONSIVE -->
   <header class="main-header">
     <div class="container header-flex">
       <div class="logo">
         <h1>GUSMAN<span>SHOES</span></h1>
       </div>
       
-      <!-- Menú en español -->
+      <!-- Menú desktop -->
       <nav class="nav-menu">
         <ul class="nav-list">
           <li><a href="#inicio">Inicio</a></li>
           <li class="has-submenu">
             <a href="#catalogo">Catálogo</a>
             <ul class="submenu">
-              <li><a href="#zapatillas-mayorista">Zapatillas al por mayor</a></li>
-              <li><a href="#sandalias-mayorista">Sandalias al por mayor</a></li>
-              <li><a href="#botas-mayorista">Botas al por mayor</a></li>
-              <li><a href="#calzado-femenino-mayorista">Calzado femenino al por mayor</a></li>
+              <li><a href="#zapatillas-mayorista">Zapatillas</a></li>
+              <li><a href="#sandalias-mayorista">Sandalias</a></li>
+              <li><a href="#botas-mayorista">Botas</a></li>
+              <li><a href="#calzado-femenino-mayorista">Calzado femenino</a></li>
             </ul>
           </li>
           <li><a href="#como-comprar">Cómo comprar</a></li>
@@ -745,7 +941,7 @@
       </div>
     </div>
 
-    <!-- Menú mobile en español -->
+    <!-- Menú mobile -->
     <div class="mobile-menu" id="mobileMenu">
       <ul class="mobile-list">
         <li><a href="#inicio" onclick="closeMenu()">Inicio</a></li>
@@ -755,7 +951,7 @@
             <li><a href="#zapatillas-mayorista" onclick="closeMenu()">Zapatillas al por mayor</a></li>
             <li><a href="#sandalias-mayorista" onclick="closeMenu()">Sandalias al por mayor</a></li>
             <li><a href="#botas-mayorista" onclick="closeMenu()">Botas al por mayor</a></li>
-            <li><a href="#calzado-femenino-mayorista" onclick="closeMenu()">Calzado femenino al por mayor</a></li>
+            <li><a href="#calzado-femenino-mayorista" onclick="closeMenu()">Calzado femenino</a></li>
           </ul>
         </li>
         <li><a href="#como-comprar" onclick="closeMenu()">Cómo comprar</a></li>
@@ -770,7 +966,7 @@
     </div>
   </header>
 
-  <!-- HERO con ID para inicio -->
+  <!-- HERO -->
   <section class="hero" id="inicio">
     <div class="container">
       <div class="hero-grid">
@@ -785,12 +981,12 @@
         </div>
         <div class="hero-stats">
           <div class="stats-numbers">
-            <div class="stat-item"><span class="stat-value">+800</span> <span class="stat-label">clientes mayoristas</span></div>
+            <div class="stat-item"><span class="stat-value">+800</span> <span class="stat-label">clientes</span></div>
             <div class="stat-item"><span class="stat-value">15</span> <span class="stat-label">años</span></div>
-            <div class="stat-item"><span class="stat-value">24/7</span> <span class="stat-label">pedidos online</span></div>
+            <div class="stat-item"><span class="stat-value">24/7</span> <span class="stat-label">online</span></div>
           </div>
           <div class="disponibilidad">
-            <span class="dot-verde"></span> <strong>Stock disponible / Envío en 24/48hs</strong>
+            <span class="dot-verde"></span> <strong>Stock disponible / Envío 24/48hs</strong>
           </div>
         </div>
       </div>
@@ -800,68 +996,68 @@
   <!-- TRUST BANNER -->
   <div class="trust-banner">
     <div class="container trust-grid">
-      <div class="trust-item"><div class="trust-value">4.8★</div><div>342 reseñas verificadas</div></div>
-      <div class="trust-item"><div class="trust-value">+500</div><div>modelos en catálogo</div></div>
-      <div class="trust-item"><div class="trust-value">15</div><div>años de experiencia</div></div>
-      <div class="trust-item"><div class="trust-value">48h</div><div>entrega promedio</div></div>
+      <div class="trust-item"><div class="trust-value">4.8★</div><div>342 reseñas</div></div>
+      <div class="trust-item"><div class="trust-value">+500</div><div>modelos</div></div>
+      <div class="trust-item"><div class="trust-value">15</div><div>años</div></div>
+      <div class="trust-item"><div class="trust-value">48h</div><div>entrega</div></div>
     </div>
   </div>
 
-  <!-- CATÁLOGO - Secciones de productos en español -->
+  <!-- CATÁLOGO -->
   <section class="categorias" id="catalogo">
     <div class="container">
       <h2 class="section-title">Catálogo de productos</h2>
       <div class="section-sub">Hacé tu pedido directamente por WhatsApp — cada producto tiene su enlace directo.</div>
       
-      <!-- Zapatillas al por mayor -->
+      <!-- Zapatillas -->
       <div class="categoria-grupo" id="zapatillas-mayorista">
         <div class="grupo-titulo">
           Zapatillas al por mayor <span class="badge">8 modelos</span>
         </div>
         <div class="card-grid">
-          <div class="card-producto"><div class="card-img" title="Zapatillas running"></div><div class="card-title">Zapatillas Running</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Zapatillas%20Running%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
-          <div class="card-producto"><div class="card-img" title="Zapatillas casual"></div><div class="card-title">Zapatillas Casual</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Zapatillas%20Casual%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
-          <div class="card-producto"><div class="card-img" title="Zapatillas deportivas"></div><div class="card-title">Zapatillas Deportivas</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Zapatillas%20Deportivas%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
-          <div class="card-producto"><div class="card-img" title="Zapatillas infantiles"></div><div class="card-title">Zapatillas Infantiles</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Zapatillas%20Infantiles%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
+          <div class="card-producto"><div class="card-img"></div><div class="card-title">Zapatillas Running</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Zapatillas%20Running%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
+          <div class="card-producto"><div class="card-img"></div><div class="card-title">Zapatillas Casual</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Zapatillas%20Casual%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
+          <div class="card-producto"><div class="card-img"></div><div class="card-title">Zapatillas Deportivas</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Zapatillas%20Deportivas%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
+          <div class="card-producto"><div class="card-img"></div><div class="card-title">Zapatillas Infantiles</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Zapatillas%20Infantiles%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
         </div>
       </div>
 
-      <!-- Sandalias al por mayor -->
+      <!-- Sandalias -->
       <div class="categoria-grupo" id="sandalias-mayorista">
         <div class="grupo-titulo">
           Sandalias al por mayor <span class="badge">6 modelos</span>
         </div>
         <div class="card-grid">
-          <div class="card-producto"><div class="card-img" title="Sandalias femeninas"></div><div class="card-title">Sandalias Femeninas</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Sandalias%20Femeninas%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
-          <div class="card-producto"><div class="card-img" title="Sandalias masculinas"></div><div class="card-title">Sandalias Masculinas</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Sandalias%20Masculinas%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
-          <div class="card-producto"><div class="card-img" title="Sandalias infantiles"></div><div class="card-title">Sandalias Infantiles</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Sandalias%20Infantiles%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
-          <div class="card-producto"><div class="card-img" title="Ojotas"></div><div class="card-title">Ojotas</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Ojotas%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
+          <div class="card-producto"><div class="card-img"></div><div class="card-title">Sandalias Femeninas</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Sandalias%20Femeninas%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
+          <div class="card-producto"><div class="card-img"></div><div class="card-title">Sandalias Masculinas</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Sandalias%20Masculinas%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
+          <div class="card-producto"><div class="card-img"></div><div class="card-title">Sandalias Infantiles</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Sandalias%20Infantiles%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
+          <div class="card-producto"><div class="card-img"></div><div class="card-title">Ojotas</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Ojotas%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
         </div>
       </div>
 
-      <!-- Botas al por mayor -->
+      <!-- Botas -->
       <div class="categoria-grupo" id="botas-mayorista">
         <div class="grupo-titulo">
           Botas al por mayor <span class="badge">5 modelos</span>
         </div>
         <div class="card-grid">
-          <div class="card-producto"><div class="card-img" title="Botas femeninas"></div><div class="card-title">Botas Femeninas</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Botas%20Femeninas%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
-          <div class="card-producto"><div class="card-img" title="Botas masculinas"></div><div class="card-title">Botas Masculinas</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Botas%20Masculinas%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
-          <div class="card-producto"><div class="card-img" title="Botas infantiles"></div><div class="card-title">Botas Infantiles</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Botas%20Infantiles%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
-          <div class="card-producto"><div class="card-img" title="Botas de cuero"></div><div class="card-title">Botas de Cuero</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Botas%20de%20Cuero%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
+          <div class="card-producto"><div class="card-img"></div><div class="card-title">Botas Femeninas</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Botas%20Femeninas%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
+          <div class="card-producto"><div class="card-img"></div><div class="card-title">Botas Masculinas</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Botas%20Masculinas%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
+          <div class="card-producto"><div class="card-img"></div><div class="card-title">Botas Infantiles</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Botas%20Infantiles%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
+          <div class="card-producto"><div class="card-img"></div><div class="card-title">Botas de Cuero</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Botas%20de%20Cuero%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
         </div>
       </div>
 
-      <!-- Calzado femenino al por mayor -->
+      <!-- Calzado femenino -->
       <div class="categoria-grupo" id="calzado-femenino-mayorista">
         <div class="grupo-titulo">
           Calzado femenino al por mayor <span class="badge">10 modelos</span>
         </div>
         <div class="card-grid">
-          <div class="card-producto"><div class="card-img" title="Tacos / Scarpin"></div><div class="card-title">Tacos / Scarpin</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Tacos%20Scarpin%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
-          <div class="card-producto"><div class="card-img" title="Bailarinas"></div><div class="card-title">Bailarinas</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Bailarinas%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
-          <div class="card-producto"><div class="card-img" title="Mocasines"></div><div class="card-title">Mocasines</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Mocasines%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
-          <div class="card-producto"><div class="card-img" title="Tamaños"></div><div class="card-title">Tamaños</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Tama%C3%B1os%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
+          <div class="card-producto"><div class="card-img"></div><div class="card-title">Tacos / Scarpin</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Tacos%20Scarpin%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
+          <div class="card-producto"><div class="card-img"></div><div class="card-title">Bailarinas</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Bailarinas%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
+          <div class="card-producto"><div class="card-img"></div><div class="card-title">Mocasines</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Mocasines%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
+          <div class="card-producto"><div class="card-img"></div><div class="card-title">Tamaños</div><a href="https://wa.me/5493757326174?text=Hola%2C%20quiero%20comprar%20Tama%C3%B1os%20(por%20mayor)" target="_blank" class="btn-wa">Pedir lote</a></div>
         </div>
       </div>
     </div>
@@ -871,23 +1067,21 @@
   <section class="beneficios" id="como-comprar" style="background: white;">
     <div class="container">
       <h2 class="section-title">Cómo comprar</h2>
-      <div style="max-width: 800px; margin: 0 auto;">
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; text-align: center;">
-          <div>
-            <div style="background: #FF6B00; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 24px; font-weight: 800;">1</div>
-            <h3 style="margin-bottom: 10px;">Elegí tus productos</h3>
-            <p style="color: #555;">Navegá por nuestro catálogo y seleccioná los modelos que te interesan.</p>
-          </div>
-          <div>
-            <div style="background: #FF6B00; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 24px; font-weight: 800;">2</div>
-            <h3 style="margin-bottom: 10px;">Contactanos por WhatsApp</h3>
-            <p style="color: #555;">Hacé tu pedido a través de WhatsApp con el número de cada producto.</p>
-          </div>
-          <div>
-            <div style="background: #FF6B00; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 24px; font-weight: 800;">3</div>
-            <h3 style="margin-bottom: 10px;">Recibí tu pedido</h3>
-            <p style="color: #555;">Coordinamos el envío a todo el país. Recibí en 24/48hs.</p>
-          </div>
+      <div class="pasos-grid">
+        <div>
+          <div style="background: #FF6B00; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 20px; font-weight: 800;">1</div>
+          <h3 style="margin-bottom: 10px;">Elegí tus productos</h3>
+          <p style="color: #555;">Navegá por nuestro catálogo y seleccioná los modelos que te interesan.</p>
+        </div>
+        <div>
+          <div style="background: #FF6B00; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 20px; font-weight: 800;">2</div>
+          <h3 style="margin-bottom: 10px;">Contactanos por WhatsApp</h3>
+          <p style="color: #555;">Hacé tu pedido a través de WhatsApp con el número de cada producto.</p>
+        </div>
+        <div>
+          <div style="background: #FF6B00; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 20px; font-weight: 800;">3</div>
+          <h3 style="margin-bottom: 10px;">Recibí tu pedido</h3>
+          <p style="color: #555;">Coordinamos el envío a todo el país. Recibí en 24/48hs.</p>
         </div>
       </div>
     </div>
@@ -898,15 +1092,15 @@
     <div class="container">
       <h2 class="section-title">Ser revendedor</h2>
       <div style="max-width: 600px; margin: 0 auto; text-align: center;">
-        <p style="font-size: 1.2rem; margin-bottom: 30px;">Trabajamos con revendedores de todo el país. Ofrecemos los mejores precios y condiciones exclusivas.</p>
-        <div style="background: white; padding: 30px; border-radius: 16px;">
+        <p style="font-size: 1.1rem; margin-bottom: 30px;">Trabajamos con revendedores de todo el país. Ofrecemos los mejores precios y condiciones exclusivas.</p>
+        <div style="background: white; padding: 25px; border-radius: 16px;">
           <h3 style="margin-bottom: 20px;">Ventajas para revendedores</h3>
           <ul style="list-style: none; text-align: left;">
-            <li style="margin-bottom: 10px;">✓ Precios mayoristas desde 1 unidad</li>
-            <li style="margin-bottom: 10px;">✓ Catálogo con más de 500 modelos</li>
-            <li style="margin-bottom: 10px;">✓ Envíos a todo el país</li>
-            <li style="margin-bottom: 10px;">✓ Atención personalizada</li>
-            <li style="margin-bottom: 10px;">✓ Nuevos ingresos semanales</li>
+            <li style="margin-bottom: 8px;">✓ Precios mayoristas desde 1 unidad</li>
+            <li style="margin-bottom: 8px;">✓ Catálogo con más de 500 modelos</li>
+            <li style="margin-bottom: 8px;">✓ Envíos a todo el país</li>
+            <li style="margin-bottom: 8px;">✓ Atención personalizada</li>
+            <li style="margin-bottom: 8px;">✓ Nuevos ingresos semanales</li>
           </ul>
           <a href="https://wa.me/5493757326174" target="_blank" class="btn-green" style="margin-top: 20px;">Quiero ser revendedor</a>
         </div>
@@ -919,8 +1113,8 @@
     <div class="container">
       <h2 class="section-title">Sobre nosotros</h2>
       <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-        <p style="font-size: 1.2rem; color: #333; margin-bottom: 20px;">Somos una empresa familiar con más de 15 años de trayectoria en el mercado mayorista de calzados. Trabajamos directamente con fábricas para ofrecer la mejor relación precio-calidad a revendedores de todo el país.</p>
-        <p style="font-size: 1.2rem; color: #333;">Nuestro compromiso es con la calidad, la variedad y la satisfacción de nuestros clientes. Por eso, día a día nos esforzamos en ampliar nuestro catálogo y mejorar nuestro servicio.</p>
+        <p style="font-size: 1.1rem; color: #333; margin-bottom: 20px;">Somos una empresa familiar con más de 15 años de trayectoria en el mercado mayorista de calzados. Trabajamos directamente con fábricas para ofrecer la mejor relación precio-calidad a revendedores de todo el país.</p>
+        <p style="font-size: 1.1rem; color: #333;">Nuestro compromiso es con la calidad, la variedad y la satisfacción de nuestros clientes.</p>
       </div>
     </div>
   </section>
@@ -929,20 +1123,20 @@
   <section class="beneficios" id="blog" style="background: #F5F5F5;">
     <div class="container">
       <h2 class="section-title">Blog</h2>
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
-        <div style="background: white; padding: 20px; border-radius: 16px;">
+      <div class="blog-grid">
+        <div class="blog-card">
           <h3 style="margin-bottom: 10px;">Tendencias de moda</h3>
-          <p style="color: #555; margin-bottom: 15px;">Lo que viene en calzados para esta temporada. Colores, estilos y materiales que serán tendencia.</p>
+          <p style="color: #555; margin-bottom: 15px;">Lo que viene en calzados para esta temporada.</p>
           <a href="#" style="color: #FF6B00; text-decoration: none; font-weight: 600;">Leer más →</a>
         </div>
-        <div style="background: white; padding: 20px; border-radius: 16px;">
+        <div class="blog-card">
           <h3 style="margin-bottom: 10px;">Consejos para revendedores</h3>
-          <p style="color: #555; margin-bottom: 15px;">Cómo aumentar tus ventas mayoristas. Estrategias y tips para crecer en el rubro.</p>
+          <p style="color: #555; margin-bottom: 15px;">Cómo aumentar tus ventas mayoristas.</p>
           <a href="#" style="color: #FF6B00; text-decoration: none; font-weight: 600;">Leer más →</a>
         </div>
-        <div style="background: white; padding: 20px; border-radius: 16px;">
+        <div class="blog-card">
           <h3 style="margin-bottom: 10px;">Guía de talles</h3>
-          <p style="color: #555; margin-bottom: 15px;">Todo lo que necesitas saber para elegir el talle correcto. Tablas de conversión y consejos.</p>
+          <p style="color: #555; margin-bottom: 15px;">Todo lo que necesitas saber para elegir el talle correcto.</p>
           <a href="#" style="color: #FF6B00; text-decoration: none; font-weight: 600;">Leer más →</a>
         </div>
       </div>
@@ -954,10 +1148,10 @@
     <div class="container">
       <h2 class="section-title">Contacto</h2>
       <div style="max-width: 600px; margin: 0 auto; text-align: center;">
-        <p style="font-size: 1.2rem; margin-bottom: 20px;">📞 +54 9 3757 326174</p>
-        <p style="font-size: 1.2rem; margin-bottom: 20px;">📧 ventas@gusmanshoes.com.ar</p>
-        <p style="font-size: 1.2rem; margin-bottom: 20px;">📍 Buenos Aires, Argentina</p>
-        <p style="font-size: 1rem; color: #555;">Horario de atención: Lunes a Viernes de 9:00 a 18:00 hs</p>
+        <p style="font-size: 1.1rem; margin-bottom: 15px;">📞 +54 9 3757 326174</p>
+        <p style="font-size: 1.1rem; margin-bottom: 15px;">📧 ventas@gusmanshoes.com.ar</p>
+        <p style="font-size: 1.1rem; margin-bottom: 15px;">📍 Buenos Aires, Argentina</p>
+        <p style="font-size: 0.9rem; color: #555;">Lunes a Viernes 9:00 a 18:00 hs</p>
       </div>
     </div>
   </section>
@@ -986,7 +1180,7 @@
         <ul>
           <li>📞 +54 9 3757 326174</li>
           <li>📧 ventas@gusmanshoes.com.ar</li>
-          <li>📍 Buenos Aires, Argentina</li>
+          <li>📍 Buenos Aires</li>
         </ul>
       </div>
     </div>
@@ -1025,7 +1219,7 @@
 
     // Cerrar menú al cambiar tamaño de ventana
     window.addEventListener('resize', function() {
-      if (window.innerWidth > 768) {
+      if (window.innerWidth > 1023) {
         closeMenu();
       }
     });
