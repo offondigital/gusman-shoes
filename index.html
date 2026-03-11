@@ -12,7 +12,7 @@
   <meta property="og:image" content="https://ejemplo.com/og-gusman.jpg">
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <!-- Schema.org mejorado -->
+  <!-- Schema.org -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -43,16 +43,19 @@
     ]
   }
   </script>
-  <!-- Fonte Inter (Google) -->
+  <!-- Fonte Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <style>
-    /* RESET Y PROPORCIÓN DE COLORES: 60% blanco, 30% negro/cinza, 10% CTA */
+    /* RESET Y PROPORCIÓN DE COLORES */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
     }
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -68,13 +71,7 @@
     h1, h2, h3 {
       color: #111111;
     }
-    .bg-light-gray {
-      background-color: #F5F5F5;
-    }
-    .border-light-gray {
-      border-color: #E5E5E5;
-    }
-    /* CTA principal: laranja */
+    /* CTA laranja */
     .btn-cta {
       background-color: #FF6B00;
       color: white;
@@ -91,7 +88,7 @@
     .btn-cta:hover {
       background-color: #E85A00;
     }
-    /* CTA secundario: verde */
+    /* CTA verde */
     .btn-green {
       background-color: #22C55E;
       color: white;
@@ -115,6 +112,8 @@
       padding: 12px 0;
       font-size: 0.875rem;
       border-bottom: 1px solid #333;
+      position: relative;
+      z-index: 1001;
     }
     .cookie-content {
       display: flex;
@@ -141,17 +140,19 @@
       border-color: #FF6B00;
     }
 
-    /* HEADER */
+    /* HEADER CON MENÚ SANDWICH */
     .main-header {
       background: #FFFFFF;
       border-bottom: 1px solid #E5E5E5;
       padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
     .header-flex {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
     }
     .logo h1 {
       font-size: 2rem;
@@ -166,7 +167,27 @@
       font-size: 0.9rem;
       margin-left: 8px;
     }
-    .contact-header a {
+    /* Navegación desktop */
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .nav-list {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+    .nav-list a {
+      text-decoration: none;
+      color: #111;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .nav-list a:hover {
+      color: #FF6B00;
+    }
+    .nav-whatsapp a {
       color: #111;
       text-decoration: none;
       font-weight: 600;
@@ -174,18 +195,71 @@
       padding: 8px 20px;
       border-radius: 40px;
       transition: 0.2s;
+      white-space: nowrap;
     }
-    .contact-header a:hover {
+    .nav-whatsapp a:hover {
       background: #111;
       color: white;
     }
+    /* Menú hamburguesa (mobile) */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 6px;
+    }
+    .hamburger span {
+      width: 30px;
+      height: 3px;
+      background: #111;
+      border-radius: 3px;
+      transition: 0.3s;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      height: calc(100vh - 80px);
+      background: white;
+      flex-direction: column;
+      padding: 40px 32px;
+      z-index: 999;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+    .mobile-menu.active {
+      transform: translateX(0);
+    }
+    .mobile-list {
+      list-style: none;
+      margin-bottom: 32px;
+    }
+    .mobile-list li {
+      margin-bottom: 24px;
+    }
+    .mobile-list a {
+      text-decoration: none;
+      color: #111;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+    .mobile-whatsapp a {
+      display: inline-block;
+      border: 2px solid #111;
+      padding: 12px 24px;
+      border-radius: 40px;
+      font-weight: 700;
+      text-decoration: none;
+      color: #111;
+    }
 
-    /* HERO COM IMAGEM DE FUNDO FIXA */
+    /* HERO COM IMAGEM FIXA */
     .hero {
       position: relative;
-      background-color: #F5F5F5; /* fallback */
+      background-color: #F5F5F5;
       padding: 80px 0;
-      /* Imagem de fundo fixa (exemplo Unsplash - trocar pela URL desejada) */
       background-image: url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
       background-attachment: fixed;
       background-position: center;
@@ -199,7 +273,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.5); /* overlay escuro para contraste */
+      background-color: rgba(0, 0, 0, 0.5);
       z-index: 1;
     }
     .hero .container {
@@ -290,7 +364,7 @@
       border-radius: 50%;
     }
 
-    /* TRUST BANNER (30% negro) */
+    /* TRUST BANNER */
     .trust-banner {
       background: #111111;
       color: white;
@@ -308,7 +382,7 @@
       color: #FF8C42;
     }
 
-    /* CATEGORIAS - CARDS CON IMAGEN (placeholder) Y BOTÓN WHATSAPP */
+    /* CATEGORIAS */
     .categorias {
       padding: 80px 0;
       background: white;
@@ -328,6 +402,7 @@
     }
     .categoria-grupo {
       margin-bottom: 64px;
+      scroll-margin-top: 100px;
     }
     .grupo-titulo {
       font-size: 2rem;
@@ -367,18 +442,12 @@
       box-shadow: 0 12px 20px rgba(0,0,0,0.08);
       border-color: #FF6B00;
     }
-    /* espacio para imagen - placeholder gráfico */
     .card-img {
       width: 100%;
       height: 120px;
       background: #ddd;
       border-radius: 16px;
       margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #666;
-      font-size: 0.8rem;
       background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="%23999" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16.1A5 5 0 0 1 5.9 20M2 12.05A9 9 0 0 1 9.95 20M2 8V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6"/><line x1="2" y1="20" x2="22" y2="20"/></svg>');
       background-repeat: no-repeat;
       background-position: center;
@@ -413,7 +482,7 @@
       font-size: 1rem;
     }
 
-    /* BENEFICIOS (con emojis) */
+    /* BENEFICIOS */
     .beneficios {
       background: #F5F5F5;
       padding: 60px 0;
@@ -492,12 +561,39 @@
       text-decoration: none;
     }
 
-    @media (max-width: 768px) {
+    /* RESPONSIVIDAD */
+    @media (max-width: 1024px) {
       .hero-grid {
         grid-template-columns: 1fr;
       }
+    }
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .mobile-menu {
+        display: flex;
+      }
       .trust-grid {
         grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      .hero-content h2 {
+        font-size: 2.2rem;
+      }
+      .container {
+        padding: 0 20px;
+      }
+    }
+    @media (max-width: 480px) {
+      .card-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .btn-cta, .btn-green {
+        padding: 12px 24px;
       }
     }
   </style>
@@ -511,18 +607,49 @@
     </div>
   </div>
 
+  <!-- HEADER CON MENÚ SANDWICH -->
   <header class="main-header">
     <div class="container header-flex">
       <div class="logo">
         <h1>GUSMAN<span>SHOES</span></h1>
       </div>
-      <div class="contact-header">
-        <a href="#">📞 +54 9 3757 326174</a>
+      
+      <!-- Menú desktop -->
+      <nav class="nav-menu">
+        <ul class="nav-list">
+          <li><a href="#ninas">Niñas</a></li>
+          <li><a href="#ninos">Niños</a></li>
+          <li><a href="#adultos">Adultos</a></li>
+          <li><a href="#beneficios">Beneficios</a></li>
+        </ul>
+        <div class="nav-whatsapp">
+          <a href="https://wa.me/5493757326174" target="_blank">📱 +54 9 3757 326174</a>
+        </div>
+      </nav>
+
+      <!-- Hamburguesa -->
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <!-- Menú mobile -->
+    <div class="mobile-menu" id="mobileMenu">
+      <ul class="mobile-list">
+        <li><a href="#ninas" onclick="closeMenu()">Niñas</a></li>
+        <li><a href="#ninos" onclick="closeMenu()">Niños</a></li>
+        <li><a href="#adultos" onclick="closeMenu()">Adultos</a></li>
+        <li><a href="#beneficios" onclick="closeMenu()">Beneficios</a></li>
+      </ul>
+      <div class="mobile-whatsapp">
+        <a href="https://wa.me/5493757326174" target="_blank" onclick="closeMenu()">📱 WhatsApp</a>
       </div>
     </div>
   </header>
 
-  <!-- SECCIÓN 1: HERO COM IMAGEM DE FUNDO FIXA -->
+  <!-- HERO -->
   <section class="hero">
     <div class="container">
       <div class="hero-grid">
@@ -549,7 +676,7 @@
     </div>
   </section>
 
-  <!-- SECCIÓN 2: TRUST BANNER -->
+  <!-- TRUST BANNER -->
   <div class="trust-banner">
     <div class="container trust-grid">
       <div class="trust-item"><div class="trust-value">4.8★</div><div>342 reseñas verificadas</div></div>
@@ -559,14 +686,14 @@
     </div>
   </div>
 
-  <!-- SECCIÓN 3: CATEGORIAS -->
+  <!-- CATEGORIAS -->
   <section class="categorias">
     <div class="container">
-      <h2 class="section-title" id="ninas">Categorías con stock mayorista</h2>
+      <h2 class="section-title">Categorías con stock mayorista</h2>
       <div class="section-sub">Hacé tu pedido directamente por WhatsApp — cada producto tiene su enlace directo.</div>
       
       <!-- NIÑA -->
-      <div class="categoria-grupo">
+      <div class="categoria-grupo" id="ninas">
         <div class="grupo-titulo">
           Línea Niña <span class="badge">7 modelos</span>
         </div>
@@ -598,7 +725,7 @@
       </div>
 
       <!-- ADULTOS -->
-      <div class="categoria-grupo">
+      <div class="categoria-grupo" id="adultos">
         <div class="grupo-titulo">
           Línea Adultos <span class="badge">+10 modelos</span>
         </div>
@@ -614,8 +741,8 @@
     </div>
   </section>
 
-  <!-- SECCIÓN 4: BENEFICIOS -->
-  <section class="beneficios">
+  <!-- BENEFICIOS -->
+  <section class="beneficios" id="beneficios">
     <div class="container">
       <h2 class="section-title">Por qué los revendedores confían en Gusman Shoes</h2>
       <div class="beneficios-grid">
@@ -662,8 +789,37 @@
   </footer>
 
   <script>
+    // Cookie
     document.querySelector('.btn-cookie')?.addEventListener('click', function() {
       this.closest('.cookie-bar').style.display = 'none';
+    });
+
+    // Menú hamburguesa
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    function toggleMenu() {
+      mobileMenu.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
+    }
+
+    function closeMenu() {
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+
+    // Cerrar menú al hacer clic en un enlace
+    document.querySelectorAll('.mobile-list a, .mobile-whatsapp a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Cerrar menú al cambiar tamaño de ventana (si se vuelve a desktop)
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768) {
+        closeMenu();
+      }
     });
   </script>
 </body>
