@@ -4,7 +4,15 @@ document.addEventListener('DOMContentLoaded', () => {
   if (cookieBtn) {
     cookieBtn.addEventListener('click', (e) => {
       e.currentTarget.closest('.cookie-bar').style.display = 'none';
+      // Salvar preferência no localStorage
+      localStorage.setItem('cookiesAccepted', 'true');
     });
+  }
+
+  // Verificar se já aceitou cookies
+  if (localStorage.getItem('cookiesAccepted') === 'true') {
+    const cookieBar = document.querySelector('.cookie-bar');
+    if (cookieBar) cookieBar.style.display = 'none';
   }
 });
 
@@ -29,6 +37,16 @@ if (hamburger && mobileMenu) {
       mobileMenu.classList.remove('active');
       document.body.style.overflow = 'auto';
     });
+  });
+
+  // Fechar com tecla ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
   });
 }
 
@@ -56,12 +74,44 @@ if ('IntersectionObserver' in window) {
         observer.unobserve(img);
       }
     });
-  }, { rootMargin: '200px' }); // Carrega 200px antes de aparecer
+  }, { 
+    rootMargin: '200px', // Carrega 200px antes de aparecer
+    threshold: 0.01
+  });
 
-  document.querySelectorAll('.slide-item[data-bg]').forEach(img => imageObserver.observe(img));
+  // Observar todos os elementos com data-bg
+  document.querySelectorAll('.slide-item[data-bg]').forEach(img => {
+    imageObserver.observe(img);
+  });
 }
 
-// Otimização de toque para mobile
+// Detecção de toque para otimizações mobile
 if ('ontouchstart' in window) {
   document.documentElement.classList.add('touch');
+}
+
+// Smooth scroll para links internos
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const href = this.getAttribute('href');
+    if (href === '#') return;
+    
+    const target = document.querySelector(href);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+
+// Registrar Service Worker para cache (opcional)
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(err => {
+      console.log('ServiceWorker não suportado:', err);
+    });
+  });
 }
