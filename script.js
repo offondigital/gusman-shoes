@@ -1,44 +1,48 @@
 // Cookie bar
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
   const cookieBtn = document.querySelector('.btn-cookie');
   if (cookieBtn) {
-    cookieBtn.addEventListener('click', function() {
-      this.closest('.cookie-bar').style.display = 'none';
+    cookieBtn.addEventListener('click', (e) => {
+      e.currentTarget.closest('.cookie-bar').style.display = 'none';
     });
   }
 });
 
-// Menú hamburguesa
+// Menú hamburguesa com acessibilidade
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
 
-function toggleMenu() {
-  mobileMenu.classList.toggle('active');
-  document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
+if (hamburger && mobileMenu) {
+  hamburger.addEventListener('click', () => {
+    const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+    hamburger.setAttribute('aria-expanded', !isExpanded);
+    mobileMenu.setAttribute('aria-hidden', isExpanded);
+    mobileMenu.classList.toggle('active');
+    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
+  });
+
+  // Fechar ao clicar em links
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+  });
 }
 
-function closeMenu() {
-  mobileMenu.classList.remove('active');
-  document.body.style.overflow = 'auto';
-}
-
-if (hamburger) {
-  hamburger.addEventListener('click', toggleMenu);
-}
-
-// Cerrar menú al hacer clic en un enlace
-document.querySelectorAll('.mobile-list a, .mobile-whatsapp a').forEach(link => {
-  link.addEventListener('click', closeMenu);
-});
-
-// Cerrar menú al cambiar tamaño de ventana
-window.addEventListener('resize', function() {
-  if (window.innerWidth > 1023) {
-    closeMenu();
+// Fechar menu em resize
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 1023 && mobileMenu?.classList.contains('active')) {
+    hamburger?.setAttribute('aria-expanded', 'false');
+    mobileMenu?.setAttribute('aria-hidden', 'true');
+    mobileMenu?.classList.remove('active');
+    document.body.style.overflow = 'auto';
   }
 });
 
-// Lazy loading para imágenes de fondo (opcional - mejora adicional)
+// Lazy loading avançado com Intersection Observer
 if ('IntersectionObserver' in window) {
   const imageObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
@@ -52,9 +56,12 @@ if ('IntersectionObserver' in window) {
         observer.unobserve(img);
       }
     });
-  });
+  }, { rootMargin: '200px' }); // Carrega 200px antes de aparecer
 
-  document.querySelectorAll('.slide-item[data-bg]').forEach(img => {
-    imageObserver.observe(img);
-  });
+  document.querySelectorAll('.slide-item[data-bg]').forEach(img => imageObserver.observe(img));
+}
+
+// Otimização de toque para mobile
+if ('ontouchstart' in window) {
+  document.documentElement.classList.add('touch');
 }
